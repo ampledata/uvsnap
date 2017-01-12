@@ -6,7 +6,6 @@
 import argparse
 import os
 import tempfile
-import time
 
 import uvsnap
 
@@ -27,7 +26,8 @@ def cli():
         '-a', '--api_key', help='NVR API Key'
     )
     parser.add_argument(
-        '-d', '--directory', help='Snapshot Directory', default=tempfile.mkdtemp()
+        '-d', '--directory', help='Snapshot Directory',
+        default=tempfile.mkdtemp()
     )
     parser.add_argument(
         '-V', '--verbose', help='Verbose Output', action='store_true'
@@ -50,7 +50,8 @@ def cli():
                 state = 'OFFLINE'
             elif 'CONNECTED' in camera['state']:
                 state = 'online'
-            _msg = '{:<26}||{:^10}|| {:<30}'.format(camera['_id'], state, camera['name'])
+            _msg = '{:<26}||{:^10}|| {:<30}'.format(
+                camera['_id'], state, camera['name'])
             cam_list.append(_msg)
 
         print "\n".join(cam_list)
@@ -63,7 +64,8 @@ def cli():
 
         for camera_id, snapshot in snapshots.iteritems():
             if snapshot is not None:
-                output_file = os.path.join(opts.directory, '%s.jpg' % camera_id)
+                output_file = os.path.join(
+                    opts.directory, '%s.jpg' % camera_id)
 
                 with open(output_file, 'w') as ofd:
                     ofd.write(snapshot)
@@ -76,7 +78,7 @@ def cli():
             if opts.command in camera['_id']:
                 camera_id = camera['_id']
 
-        if camera_id == None:
+        if camera_id is None:
             print "Camera %s not found." % opts.command
 
         if not os.path.exists(opts.directory):

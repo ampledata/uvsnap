@@ -6,7 +6,7 @@ Usage
 
 List All Cameras::
 
-    uvsnap -V -n https://172.17.0.1:7443 -a ABC1234 list
+    $ uvsnap -V -n https://172.17.0.1:7443 -a ABC1234 list
     577d92a5e4b05e057437584c  ||  online  || Reception
     57bddeb5e4b05f0574f678d0  ||  online  || Design
     5746397d5g030d9ca9caf631  ||  online  || MPOE / Telephone Room
@@ -15,12 +15,12 @@ List All Cameras::
 
 Get a Snapshot of a specific Camera::
 
-    uvsnap -V -n https://172.17.0.1:7443 -a ABC1234 577d92a5e4b05e057437584c
+    $ uvsnap -V -n https://172.17.0.1:7443 -a ABC1234 577d92a5e4b05e057437584c
     Wrote Snapshot: /tmp/577d92a5e4b05e057437584c.jpg
 
 Get a Snapshot of a all Cameras::
 
-    uvsnap -V -n https://172.17.0.1:7443 -a ABC1234 all
+    $ uvsnap -V -n https://172.17.0.1:7443 -a ABC1234 all
     Wrote Snapshot: /tmp/577d92a5e4b05e057437584c.jpg
     Wrote Snapshot: /tmp/57bddeb5e4b05f0574f678d0.jpg
     ...

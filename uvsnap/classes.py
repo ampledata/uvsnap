@@ -68,7 +68,8 @@ class NVR(object):
         for camera in self.cameras:
             if camera['state'] == 'CONNECTED' and camera['_id'] == camera_id:
                 get_snapshot = requests.get(
-                    "%s/api/2.0/snapshot/camera/%s" % (self.nvr_url, camera_id),
+                    "%s/api/2.0/snapshot/camera/%s" % (
+                        self.nvr_url, camera_id),
                     params={'force': 'true', 'apiKey': self.api_key},
                     verify=False
                 )
