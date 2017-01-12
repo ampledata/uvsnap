@@ -44,4 +44,4 @@ def get_all_snapshots():
 
             with open(output_file, 'w') as ofd:
                 ofd.write(snapshot)
-            print 'wrote %s' % output_file
+            #print 'wrote %s' % output_file
