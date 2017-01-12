@@ -33,7 +33,7 @@ publish()
 setuptools.setup(
     name=__title__,
     version=__version__,
-    description='UVSnap',
+    description='UVSnap: UniFi Video Command Line Client',
     author='Greg Albrecht',
     author_email='oss@undef.net',
     packages=['uvsnap'],
@@ -47,6 +47,6 @@ setuptools.setup(
     install_requires=[
         'requests >= 2.7.0'
     ],
-    entry_points={'console_scripts': ['uvsnap = uvsnap.cmd:get_all_snapshots']}
+    entry_points={'console_scripts': ['uvsnap = uvsnap.cmd:cli']}
 
 )
