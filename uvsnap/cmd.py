@@ -67,7 +67,7 @@ def cli():
                 output_file = os.path.join(
                     opts.directory, '%s.jpg' % camera_id)
 
-                with open(output_file, 'w') as ofd:
+                with open(output_file, 'wb') as ofd:
                     ofd.write(snapshot)
 
                 if opts.verbose:
