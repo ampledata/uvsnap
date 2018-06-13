@@ -62,7 +62,7 @@ def cli():
 
         snapshots = nvr.get_all_snapshots()
 
-        for camera_id, snapshot in snapshots.iteritems():
+        for camera_id, snapshot in snapshots.items():
             if snapshot is not None:
                 output_file = os.path.join(
                     opts.directory, '%s.jpg' % camera_id)
