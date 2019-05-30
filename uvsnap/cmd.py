@@ -54,7 +54,7 @@ def cli():
                 camera['_id'], state, camera['name'])
             cam_list.append(_msg)
 
-        print "\n".join(cam_list)
+        print("\n".join(cam_list))
 
     elif opts.command == 'all':
         if not os.path.exists(opts.directory):
@@ -62,16 +62,23 @@ def cli():
 
         snapshots = nvr.get_all_snapshots()
 
-        for camera_id, snapshot in snapshots.iteritems():
+        for camera_id, snapshot in snapshots.items():
             if snapshot is not None:
                 output_file = os.path.join(
                     opts.directory, '%s.jpg' % camera_id)
 
-                with open(output_file, 'w') as ofd:
+                with open(output_file, 'wb') as ofd:
                     ofd.write(snapshot)
 
                 if opts.verbose:
-                    print "Wrote Snapshot: %s" % output_file
+                    print('Wrote Snapshot: {}'.format(output_file))
+
+    elif opts.command == 'get_snapshot_url':
+        if not nvr.cameras:
+            nvr.get_cameras()
+
+        for camera in nvr.cameras:
+            print(nvr.get_snapshot_url(camera))
     else:
         camera_id = None
         for camera in nvr.cameras:
@@ -79,7 +86,7 @@ def cli():
                 camera_id = camera['_id']
 
         if camera_id is None:
-            print "Camera %s not found." % opts.command
+            print('Camera {} not found.'.format(opts.command))
 
         if not os.path.exists(opts.directory):
             os.makedirs(opts.directory)
@@ -93,4 +100,4 @@ def cli():
                 ofd.write(snapshot)
 
             if opts.verbose:
-                print "Wrote Snapshot: %s" % output_file
+                print('Wrote Snapshot: {}'.format(output_file))
